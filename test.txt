@@ -1,1 +1,2 @@
 select * from create1;
+insert overwrite;
