@@ -1,0 +1,21 @@
+from pyspark.sql import SparkSession
+
+#Invoking SparkSession
+spark = SparkSession.builder.appName('test_data').getOrCreate()
+
+#Reading a local File :
+df = spark.read.options(header='True',inferschema='True').csv('F:\Arif\Dataset\student-dataset.csv')
+
+#Func : Filter
+df.filter(df.city=='Oakland')
+
+#Function : col,lit
+#lit - is used as adding a new column to add static values to all data
+from pyspark.sql.functions import lit
+
+df_city = df.withColumn('new_city',lit('Trichy')).show()
+
+from pyspark.sql.functions import col
+
+df.show()
+
